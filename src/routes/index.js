@@ -1,9 +1,7 @@
-const { default: RegisterContainer } = require("../containers/Register");
-const { default: LoginContainer } = require("../containers/Login");
-const { default: ContactsContainer } = require("../containers/Contacts");
-const {
-  default: CreateContactContainer,
-} = require("../containers/Contacts/CreateContact");
+import RegisterContainer from "../containers/Register";
+import LoginContainer from "../containers/Login";
+import ContactsContainer from "../containers/Contacts";
+import CreateContactContainer from "../containers/Contacts/CreateContact";
 
 export const routes = [
   {
@@ -19,15 +17,15 @@ export const routes = [
     needsAuth: false,
   },
   {
-    path: "/",
-    component: ContactsContainer,
-    title: "contacts",
+    path: "/contact/create",
+    component: CreateContactContainer,
+    title: "loginc",
     needsAuth: true,
   },
   {
-    path: "/contact/create",
-    component: CreateContactContainer,
-    title: "createcontact",
+    path: "/",
+    component: ContactsContainer,
+    title: "contacts",
     needsAuth: true,
   },
 ];

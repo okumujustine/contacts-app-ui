@@ -9,6 +9,7 @@ import {
   Message,
 } from "semantic-ui-react";
 import Header from "../../components/Header";
+import { Link } from "react-router-dom";
 
 export default function LoginUI({
   form: { form, onChange, loginValidForm, onSubmit, error, loading },
@@ -55,6 +56,10 @@ export default function LoginUI({
               >
                 Submit
               </Button>
+              <Segment>
+                Don't have an account{" "}
+                <Link to="/auth/register">register here</Link>
+              </Segment>
             </Form>
           </Segment>
         </Grid.Column>

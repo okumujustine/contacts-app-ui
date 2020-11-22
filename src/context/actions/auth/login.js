@@ -1,14 +1,15 @@
-import axiosInstance from "../../../helpers/axios";
+import axiosInstance from "../../../helpers/axiosInstance";
 import {
   LOGIN_LOADING,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
 } from "../../../constants/actionTypes/types";
+import { CONECTION_ERROR } from "../../../constants/api";
 
 export const login = ({ username, password }) => (dispatch) => {
-  console.log("login", { username, password });
   dispatch({ type: LOGIN_LOADING });
-  axiosInstance
+
+  axiosInstance()
     .post("/auth/login/", {
       username,
       password,
@@ -20,9 +21,7 @@ export const login = ({ username, password }) => (dispatch) => {
     .catch((error) => {
       dispatch({
         type: LOGIN_ERROR,
-        payload: error.response
-          ? error.response.data
-          : "Server error try again later!",
+        payload: error.response ? error.response.data : CONECTION_ERROR,
       });
     });
 };

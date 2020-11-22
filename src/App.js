@@ -9,8 +9,10 @@ import { routes } from "./routes";
 import { GlobalProvider } from "./context/Provider";
 import isAuthenticate from "./utils/isAuthenticated";
 
-const RenderRoute = (route) => {
+function RenderRoute(route) {
   const history = useHistory();
+
+  document.title = route.title || "contactsMG";
 
   if (route.needsAuth && !isAuthenticate()) {
     history.push("/auth/login");
@@ -23,7 +25,7 @@ const RenderRoute = (route) => {
       render={(props) => <route.component {...props} />}
     ></Route>
   );
-};
+}
 
 function App() {
   return (

@@ -1,9 +1,10 @@
-import axiosInstance from "../../../helpers/axios";
+import axiosInstance from "../../../helpers/axiosInstance";
 import {
   REGISTER_LOADING,
   REGISTER_SUCCESS,
   REGISTER_ERROR,
 } from "../../../constants/actionTypes/types";
+import { CONECTION_ERROR } from "../../../constants/api";
 
 export const register = ({
   username,
@@ -13,7 +14,7 @@ export const register = ({
   password,
 }) => (dispatch) => {
   dispatch({ type: REGISTER_LOADING });
-  axiosInstance
+  axiosInstance()
     .post("/auth/register/", {
       username,
       first_name,
@@ -27,9 +28,7 @@ export const register = ({
     .catch((error) => {
       dispatch({
         type: REGISTER_ERROR,
-        payload: error.response
-          ? error.response.data
-          : "Server error try again later!",
+        payload: error.response ? error.response.data : CONECTION_ERROR,
       });
     });
 };

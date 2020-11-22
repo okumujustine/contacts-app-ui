@@ -1,10 +1,12 @@
 export const contactsInitialState = {
   contacts: {
     loading: false,
-    console: null,
+    error: null,
+    data: [],
   },
-  addContacts: {
+  addContact: {
     loading: false,
-    console: null,
+    error: null,
+    data: null,
   },
 };

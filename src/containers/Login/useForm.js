@@ -25,6 +25,7 @@ const useForm = () => {
     login(form)(authDispatch);
   };
 
+  console.log("data", data);
   React.useEffect(() => {
     if (data && data.user) {
       history.push("/");
